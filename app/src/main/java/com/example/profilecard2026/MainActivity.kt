@@ -46,7 +46,7 @@ fun ProfileCard(){
     Box{
        ProfileImage()
 
-       ProfileInfo()
+//       ProfileInfo()
     }
 }
 //function to contain and style image
@@ -58,7 +58,15 @@ fun ProfileImage(){
 //function to contain and style text
 //TODO: add text, style text, add alternate text feature
 @Composable
-fun ProfileInfo(){
+fun ProfileInfo(name: String, bio: String, modifier: Modifier = Modifier){
+    Text(
+        text = "$name",
+        modifier = modifier
+    )
+    Text(
+        text  = "$bio",
+        modifier = modifier
+    )
 
 }
 
