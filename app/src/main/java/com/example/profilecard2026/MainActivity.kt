@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 //import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -19,7 +21,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.onGloballyPositioned
 //import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -50,7 +54,7 @@ class MainActivity : ComponentActivity() {
                 ){
                     ProfileCard(
                         stringResource(R.string.daniel_andrews),
-                        "Test \nTest \nTest"
+                        stringResource(R.string.bio_text)
                     )
                 }
             }
@@ -88,14 +92,17 @@ fun ProfileCard(name: String, bio: String, modifier: Modifier = Modifier){
 //TODO: add image, style image, add image context
 @Composable
 fun ProfileImage(){
-    val imageP = painterResource(R.drawable.daniel_andrews_profile_picture)
+//    val imageP = painterResource(R.drawable.)
     val imageB = painterResource(R.drawable.background_image_20s)
     Box {
-        Image(
-            painter = imageP,
-            contentDescription = "A 90s kid with shades, posing with his arms crossed",
-            contentScale = ContentScale.Crop
-        )
+//        Image(
+//            painter = imageP,
+//            contentDescription = "A 90s kid with shades, posing with his arms crossed",
+//            contentScale = ContentScale.Crop,
+//            modifier = Modifier
+//                .size(200.dp)
+//                .clip(CircleShape)
+//        )
         Image(
             painter = imageB,
             contentDescription = "A 90s style background called a Memphis style pattern",
@@ -139,7 +146,7 @@ fun ProfileCardPreview(){
     ProfileCard2026Theme {
         ProfileCard(
             stringResource(R.string.daniel_andrews),
-            "Test \nTest \nTest"
+            stringResource(R.string.bio_text)
         )
     }
 }
