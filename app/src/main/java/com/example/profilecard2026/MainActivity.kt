@@ -1,23 +1,28 @@
 package com.example.profilecard2026
 
 import android.R.attr.lineHeight
+import android.R.attr.name
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
+//import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+//import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -38,13 +43,14 @@ class MainActivity : ComponentActivity() {
 //                    )
 //                }
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(8.dp),
                     color = MaterialTheme.colorScheme.background
                 ){
-                    ProfileText(
-                        "Daniel Andrews",
-                        "Test \nTest \nTest",
-                        modifier = Modifier.padding(8.dp)
+                    ProfileCard(
+                        stringResource(R.string.daniel_andrews),
+                        "Test \nTest \nTest"
                     )
                 }
             }
@@ -62,22 +68,44 @@ class MainActivity : ComponentActivity() {
 //        )
 //    }
 //}
+
 //Function to contain and style other functions
 //TODO: add style to box, arrange elements of profile card, create preview
 @Composable
-fun ProfileCard(){
-    Box{
+fun ProfileCard(name: String, bio: String, modifier: Modifier = Modifier){
+    Box(modifier){
        ProfileImage()
 
-//       ProfileText()
+       ProfileText(
+           name = name,
+           bio = bio,
+           modifier = modifier.padding(8.dp)
+       )
     }
 }
+
 //function to contain and style image
 //TODO: add image, style image, add image context
 @Composable
 fun ProfileImage(){
+    val imageP = painterResource(R.drawable.daniel_andrews_profile_picture)
+    val imageB = painterResource(R.drawable.background_image_20s)
+    Box {
+        Image(
+            painter = imageP,
+            contentDescription = "A 90s kid with shades, posing with his arms crossed",
+            contentScale = ContentScale.Crop
+        )
+        Image(
+            painter = imageB,
+            contentDescription = "A 90s style background called a Memphis style pattern",
+            contentScale = ContentScale.Crop,
+            alpha = 0.5F
+        )
+    }
 
 }
+
 //function to contain and style text
 //TODO: add text, style text, add alternate text feature
 @Composable
@@ -104,20 +132,13 @@ fun ProfileText(name: String, bio: String, modifier: Modifier = Modifier){
 
 }
 
-////TODO: change or delete
-//@Preview(showBackground = true)
-//@Composable
-//fun GreetingPreview() {
-//    ProfileCard2026Theme {
-//        Greeting("Android")
-//    }
-//}
+//previews ProfileCard function
 @Preview
 @Composable
-fun ProfileTextPreview(){
+fun ProfileCardPreview(){
     ProfileCard2026Theme {
-        ProfileText(
-            "Daniel Andrews",
+        ProfileCard(
+            stringResource(R.string.daniel_andrews),
             "Test \nTest \nTest"
         )
     }
