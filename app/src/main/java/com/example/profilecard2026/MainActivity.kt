@@ -39,13 +39,6 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ProfileCard2026Theme {
-//                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-//                   //TODO: change to final Profile Card
-//                    Greeting(
-//                        name = "Android",
-//                        modifier = Modifier.padding(innerPadding)
-//                    )
-//                }
                 Surface(
                     modifier = Modifier
                         .fillMaxSize()
@@ -61,23 +54,16 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-////TODO: delete from final project
-//@Composable
-//fun Greeting(name: String, modifier: Modifier = Modifier) {
-//    Surface(color = Color.LightGray) {
-//        Text(
-//            text = "Hello $name!",
-//            modifier = modifier
-//                .padding(16.dp)
-//        )
-//    }
-//}
 
 //Function to contain and style other functions
 //TODO: add style to box, arrange elements of profile card, create preview
 @Composable
 fun ProfileCard(name: String, bio: String, modifier: Modifier = Modifier){
-    Box(modifier){
+    Column(
+        verticalArrangement = Arrangement.Center,
+        modifier = modifier
+    )
+    {
        ProfileImage()
 
        ProfileText(
@@ -99,7 +85,7 @@ fun ProfileImage(){
         Image(
             painter = imageB,
             contentDescription = "A 90s style background called a Memphis style pattern",
-            contentScale = ContentScale.Crop,
+            contentScale = ContentScale.FillBounds,
             alpha = 0.5F
         )
         Image(
@@ -114,6 +100,7 @@ fun ProfileImage(){
                 )
                 .padding(borderWidth)
                 .clip(CircleShape)
+                .align(Alignment.TopStart)
         )
 
     }
@@ -129,13 +116,13 @@ fun ProfileText(name: String, bio: String, modifier: Modifier = Modifier){
         modifier = modifier
     ) {
         Text(
-            text = "$name",
+            text = name,
             fontSize = 52.sp,
             lineHeight = 60.sp,
             textAlign = TextAlign.Start
         )
         Text(
-            text  = "$bio",
+            text  = bio,
             fontSize = 24.sp,
             modifier = modifier
                 .padding(16.dp)
