@@ -1,7 +1,5 @@
 package com.example.profilecard2026
 
-//import androidx.compose.material3.Scaffold
-//import androidx.compose.ui.graphics.Color
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -10,7 +8,6 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -59,35 +56,21 @@ class MainActivity : ComponentActivity() {
 //TODO: add style to box, arrange elements of profile card, create preview
 @Composable
 fun ProfileCard(name: String, bio: String, modifier: Modifier = Modifier){
-    Column(
-        verticalArrangement = Arrangement.Center,
-        modifier = modifier
-    )
-    {
-       ProfileImage()
-
-       ProfileText(
-           name = name,
-           bio = bio,
-           modifier = modifier.padding(8.dp)
-       )
-    }
-}
-
-//function to contain and style image
-//TODO: add image, style image, add image context
-@Composable
-fun ProfileImage(){
     val imageP = painterResource(R.drawable.daniel_andrews_profile_circle)
     val imageB = painterResource(R.drawable.background_image_20s)
     val borderWidth = 4.dp
-    Box {
-        Image(
-            painter = imageB,
-            contentDescription = "A 90s style background called a Memphis style pattern",
-            contentScale = ContentScale.FillBounds,
-            alpha = 0.5F
-        )
+
+    Image(
+        painter = imageB,
+        contentDescription = "A 90s style background called a Memphis style pattern",
+        contentScale = ContentScale.Crop,
+        alpha = 0.75F,
+        modifier = Modifier.fillMaxSize()
+    )
+    Column(
+        verticalArrangement = Arrangement.Center,
+        modifier = modifier
+    ) {
         Image(
             painter = imageP,
             contentDescription = "A 90s kid with shades, posing with his arms crossed",
@@ -100,12 +83,21 @@ fun ProfileImage(){
                 )
                 .padding(borderWidth)
                 .clip(CircleShape)
-                .align(Alignment.TopStart)
+            //.align(Alignment.TopStart)
         )
-
+        ProfileText(
+            name = name,
+            bio = bio,
+            modifier = modifier.padding(8.dp)
+        )
     }
-
 }
+
+//function to contain and style image
+//TODO: add image, style image, add image context
+//@Composable
+//fun ProfileImage(){
+//}
 
 //function to contain and style text
 //TODO: add text, style text, add alternate text feature
