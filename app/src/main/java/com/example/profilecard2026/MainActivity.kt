@@ -20,10 +20,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -63,8 +68,8 @@ fun ProfileCard(name: String, bio: String, modifier: Modifier = Modifier){
     Image(
         painter = imageB,
         contentDescription = "A 90s style background called a Memphis style pattern",
-        contentScale = ContentScale.Crop,
-        alpha = 0.75F,
+        contentScale = ContentScale.FillBounds,
+        alpha = 0.5F,
         modifier = Modifier.fillMaxSize()
     )
     Column(
@@ -76,14 +81,14 @@ fun ProfileCard(name: String, bio: String, modifier: Modifier = Modifier){
             contentDescription = "A 90s kid with shades, posing with his arms crossed",
             contentScale = ContentScale.Crop,
             modifier = Modifier
-                .size(150.dp)
+                .size(216.dp)
                 .border(
                     BorderStroke(borderWidth, Color.Cyan),
                     CircleShape
                 )
                 .padding(borderWidth)
                 .clip(CircleShape)
-            //.align(Alignment.TopStart)
+                .align(Alignment.CenterHorizontally)
         )
         ProfileText(
             name = name,
@@ -93,16 +98,11 @@ fun ProfileCard(name: String, bio: String, modifier: Modifier = Modifier){
     }
 }
 
-//function to contain and style image
-//TODO: add image, style image, add image context
-//@Composable
-//fun ProfileImage(){
-//}
-
 //function to contain and style text
 //TODO: add text, style text, add alternate text feature
 @Composable
 fun ProfileText(name: String, bio: String, modifier: Modifier = Modifier){
+    val textOffset = Offset(5.0f,10.0f)
     Column(
         verticalArrangement = Arrangement.Center,
         modifier = modifier
@@ -111,14 +111,29 @@ fun ProfileText(name: String, bio: String, modifier: Modifier = Modifier){
             text = name,
             fontSize = 52.sp,
             lineHeight = 60.sp,
-            textAlign = TextAlign.Start
+            textAlign = TextAlign.Center,
+            fontWeight = FontWeight.Bold,
+            style = TextStyle(
+                fontSize = 24.sp,
+                shadow = Shadow(
+                    color = Color.LightGray, offset = textOffset, blurRadius = 0.5f
+                )
+            )
         )
         Text(
             text  = bio,
-            fontSize = 24.sp,
+            fontSize = 32.sp,
             modifier = modifier
                 .padding(16.dp)
-                .align(alignment = Alignment.Start)
+                .align(Alignment.CenterHorizontally),
+            fontStyle = FontStyle.Italic,
+            fontWeight = FontWeight.Bold,
+            style = TextStyle(
+                fontSize = 24.sp,
+                shadow = Shadow(
+                    color = Color.Cyan, offset = textOffset, blurRadius = 8f
+                )
+            )
         )
     }
   
