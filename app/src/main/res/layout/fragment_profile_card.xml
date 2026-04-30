@@ -6,16 +6,28 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="16dp" />
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_middle"
+        android:id="@+id/guideline_middleH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_middleV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.5" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_top"
@@ -23,6 +35,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="16dp" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="16dp" />
+
 
     <TextView
         android:id="@+id/header_title"
@@ -31,7 +50,27 @@
         android:text="@string/app_name"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         app:layout_constraintTop_toBottomOf="@+id/guideline_top"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_middle"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_middleH"
         app:layout_constraintStart_toStartOf="@+id/guideline_left" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/daniel_andrews"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_top"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_middleV"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"/>
+
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bio_text"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_top"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_middleV"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
